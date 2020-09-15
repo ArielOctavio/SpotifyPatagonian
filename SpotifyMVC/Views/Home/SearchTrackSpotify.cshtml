@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "SearchTrackSpotify";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js" integrity="sha512-EanukVTZc4W9tUCLnDl069Izidg49PcNRKO1upLzKt9ajq66i+bXOtlzXcIbRhb6vVEGF6BCc8wQi5T1ztCpTQ==" crossorigin="anonymous"></script>
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="panel-heading">
+        <h2>SearchTrackSpotify</h2>
+
+    </div>
+    <div class="panel-body">
+        Busqueda por nombre: @Html.TextBox("txtSearch", "")
+
+        <input type="button" value="Buscar" id="btnSerach" />
+    </div>
+}
+<div id="resultSerachId">
+
+</div>
+
+<script>
+        $("#btnSerach").click(function () {
+            var paramAjax = $("#txtSearch").val();
+            $("#resultSerachId").empty();
+                $.ajax({
+                    url: '@Url.Action("SearchTrackSpotifyItems", "Home")',
+                    type: 'GET',
+                    async: false,
+                    data: { cadena: $("#txtSearch").val() },
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html' ,
+                    error: function () {
+                        console.log("Server access failure!");
+                    },
+                    success: function (result) {
+
+                            $("#resultSerachId").html(result);
+                        }
+
+                });
+
+            });
+
+</script>
