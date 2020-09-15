@@ -1,85 +1,92 @@
 ﻿@model IEnumerable<SpotifyMVC.Models.Item>
 
+<div class="table-responsive">
+    <table class="table">
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.disc_number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.duration_ms)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.@explicit)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.href)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.is_local)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.popularity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.preview_url)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.track_number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.uri)
-        </th>
-        <th></th>
-    </tr>
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">
+                   
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.artists)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.disc_number)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.duration_ms)
+                </th>
 
-@foreach (var item in Model) {
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.uri)
+                </th>
+
+
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.popularity)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.preview_url)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.track_number)
+                </th>
+
+            </tr>
+        </thead>
+
+
+
+        @foreach (var item in Model)
+        {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.disc_number)
+        <td style="vertical-align: middle">
+
+            <div class='containerImg'>
+
+                <img class='resize_fit_center'
+                     src='@item.album.images.FirstOrDefault().url' />
+
+            </div>
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.duration_ms)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.@explicit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.href)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.is_local)
-        </td>
-        <td>
+        <td style="vertical-align: middle">
             @Html.DisplayFor(modelItem => item.name)
         </td>
-        <td>
+        <td style="vertical-align: middle">
+            @Html.DisplayFor(modelItem => item.artists.FirstOrDefault().name)
+        </td>
+        <td style="vertical-align: middle">
+
+            @Html.DisplayFor(modelItem => item.disc_number)
+        </td>
+        <td style="vertical-align: middle">
+            @Html.DisplayFor(modelItem => item.duration_ms)
+        </td>
+
+        <td style="vertical-align: middle">
+            <a href="@item.uri" target="_blank">@item.uri</a>
+        </td>
+
+
+        <td style="vertical-align: middle">
             @Html.DisplayFor(modelItem => item.popularity)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.preview_url)
+        <td style="vertical-align: middle">
+
+            <audio controls="" name="media"><source src="@item.preview_url" type="audio/mpeg"></audio>
         </td>
-        <td>
+        <td style="vertical-align: middle">
             @Html.DisplayFor(modelItem => item.track_number)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.uri)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
 
-</table>
+
+    </tr>
+        }
+
+    </table>
+    <div><strong>Total: @Model.Count()</strong></div>
+</div>
