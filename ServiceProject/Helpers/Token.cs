@@ -1,4 +1,9 @@
-﻿namespace SpotifyMVC.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace ServiceProject.Helpers
 {
     public class Token
     {

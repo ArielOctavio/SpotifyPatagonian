@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ServiceProject.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServiceProject.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost:44352/Services/TestService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:Item" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfItem" nillable="true" type="tns:ArrayOfItem" />
+  <xs:complexType name="Item">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="album" nillable="true" type="tns:Album" />
+      <xs:element minOccurs="0" name="artists" nillable="true" type="tns:ArrayOfArtist2" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="available_markets" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="disc_number" type="xs:int" />
+      <xs:element minOccurs="0" name="duration_ms" type="xs:int" />
+      <xs:element minOccurs="0" name="explicit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="external_ids" nillable="true" type="tns:ExternalIds" />
+      <xs:element minOccurs="0" name="external_urls" nillable="true" type="tns:ExternalUrls4" />
+      <xs:element minOccurs="0" name="href" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="is_local" type="xs:boolean" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="popularity" type="xs:int" />
+      <xs:element minOccurs="0" name="preview_url" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="track_number" type="xs:int" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uri" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Item" nillable="true" type="tns:Item" />
+  <xs:complexType name="Album">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="album_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="artists" nillable="true" type="tns:ArrayOfArtist" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="available_markets" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="external_urls" nillable="true" type="tns:ExternalUrls2" />
+      <xs:element minOccurs="0" name="href" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="images" nillable="true" type="tns:ArrayOfImage" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="release_date" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="release_date_precision" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="total_tracks" type="xs:int" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uri" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Album" nillable="true" type="tns:Album" />
+  <xs:complexType name="ArrayOfArtist">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Artist" nillable="true" type="tns:Artist" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfArtist" nillable="true" type="tns:ArrayOfArtist" />
+  <xs:complexType name="Artist">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="external_urls" nillable="true" type="tns:ExternalUrls" />
+      <xs:element minOccurs="0" name="href" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uri" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Artist" nillable="true" type="tns:Artist" />
+  <xs:complexType name="ExternalUrls">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="spotify" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExternalUrls" nillable="true" type="tns:ExternalUrls" />
+  <xs:complexType name="ExternalUrls2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="spotify" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExternalUrls2" nillable="true" type="tns:ExternalUrls2" />
+  <xs:complexType name="ArrayOfImage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Image" nillable="true" type="tns:Image" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfImage" nillable="true" type="tns:ArrayOfImage" />
+  <xs:complexType name="Image">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="height" type="xs:int" />
+      <xs:element minOccurs="0" name="url" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="width" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Image" nillable="true" type="tns:Image" />
+  <xs:complexType name="ArrayOfArtist2">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Artist2" nillable="true" type="tns:Artist2" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfArtist2" nillable="true" type="tns:ArrayOfArtist2" />
+  <xs:complexType name="Artist2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="external_urls" nillable="true" type="tns:ExternalUrls3" />
+      <xs:element minOccurs="0" name="href" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uri" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Artist2" nillable="true" type="tns:Artist2" />
+  <xs:complexType name="ExternalUrls3">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="spotify" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExternalUrls3" nillable="true" type="tns:ExternalUrls3" />
+  <xs:complexType name="ExternalIds">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="isrc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExternalIds" nillable="true" type="tns:ExternalIds" />
+  <xs:complexType name="ExternalUrls4">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="spotify" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExternalUrls4" nillable="true" type="tns:ExternalUrls4" />
+</xs:schema>

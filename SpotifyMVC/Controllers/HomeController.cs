@@ -1,8 +1,5 @@
-﻿
-using SpotifyMVC.Helpers;
-using SpotifyMVC.Models;
+﻿using ServiceProject.Models;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace SpotifyMVC.Controllers
@@ -16,21 +13,27 @@ namespace SpotifyMVC.Controllers
            return View();
         }
 
-        private static async Task GetTocken()
+       
+        public ActionResult SearchTrackSpotifyItems(string cadena)
         {
-            var token = SearchHelper.token;
-            if (token == null)
-                await SearchHelper.GetTokenAsync();
+
+            var service = new ServiceReferenceProject.TestServiceClient();
+            var result = service.SearchTracks(cadena);
+
+            if (result == null)
+                return View(new List<Item>());
+            return PartialView(result);
         }
 
-        public async Task<ActionResult> SearchTrackSpotifyItems(string cadena)
+        public ActionResult SearchTrackSpotifyItems2(string cadena)
         {
-            await GetTocken();
-            Root result = SearchHelper.SearchTrack(cadena);
-            if (result?.tracks?.items == null)
+
+            var service = new ServiceReferenceProject.TestServiceClient();
+            var result = service.SearchTracks(cadena);
+
+            if (result == null)
                 return View(new List<Item>());
-            return PartialView(result.tracks.items);
-           
+            return PartialView(result);
         }
     }
 }

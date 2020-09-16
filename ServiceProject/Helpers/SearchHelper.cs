@@ -1,22 +1,21 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
-using SpotifyMVC.Models;
+using ServiceProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace SpotifyMVC.Helpers
+namespace ServiceProject.Helpers
 {
-    public static class SearchHelper
+    public class SearchHelper
     {
         public static Token token { get; set; }
 
-        public static async Task GetTokenAsync() 
+        public static async Task GetTokenAsync()
         {
-      
+
             #region SecretVault
             string clientID = "0c9c1069f1254aee9b8ab392f977e275";
 
@@ -40,20 +39,20 @@ namespace SpotifyMVC.Helpers
             token = JsonConvert.DeserializeObject<Token>(msg);
         }
 
-        public static Root SearchTrack(string searchWord)
+        public static Root SearchTrack(string cadena)
         {
             var client = new RestClient("https://api.spotify.com/v1/search");
 
             client.AddDefaultHeader("Authorization", $"Bearer {token.access_token}");
-         
-            var request = new RestRequest($"?q={searchWord}&type=track&limit=15", Method.GET);
+
+            var request = new RestRequest($"?q={cadena}&type=track&limit=15", Method.GET);
 
             var response = client.Execute(request);
 
             if (response.IsSuccessful)
             {
                 var result = JsonConvert.DeserializeObject<Root>(response.Content);
-              
+
                 return result;
             }
             else

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SpotifyMVC.Models.Item>
+﻿@model IEnumerable<ServiceProject.Models.Item>
 
 <div class="table-responsive">
     <table class="table">
@@ -6,7 +6,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">
-                   
+
                 </th>
                 <th scope="col">
                     @Html.DisplayNameFor(model => model.name)
@@ -43,48 +43,48 @@
 
         @foreach (var item in Model)
         {
-    <tr>
-        <td style="vertical-align: middle">
+            <tr>
+                <td style="vertical-align: middle">
 
-            <div class='containerImg'>
+                    <div class='containerImg'>
 
-                <img class='resize_fit_center'
-                     src='@item.album.images.FirstOrDefault().url' />
+                        <img class='resize_fit_center'
+                             src='@item.album.images.FirstOrDefault().url' />
 
-            </div>
-        </td>
-        <td style="vertical-align: middle">
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td style="vertical-align: middle">
-            @Html.DisplayFor(modelItem => item.artists.FirstOrDefault().name)
-        </td>
-        <td style="vertical-align: middle">
+                    </div>
+                </td>
+                <td style="vertical-align: middle">
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td style="vertical-align: middle">
+                    @Html.DisplayFor(modelItem => item.artists.FirstOrDefault().name)
+                </td>
+                <td style="vertical-align: middle">
 
-            @Html.DisplayFor(modelItem => item.disc_number)
-        </td>
-        <td style="vertical-align: middle">
-            @Html.DisplayFor(modelItem => item.duration_ms)
-        </td>
+                    @Html.DisplayFor(modelItem => item.disc_number)
+                </td>
+                <td style="vertical-align: middle">
+                    @Html.DisplayFor(modelItem => item.duration_ms)
+                </td>
 
-        <td style="vertical-align: middle">
-            <a href="@item.uri" target="_blank">@item.uri</a>
-        </td>
-
-
-        <td style="vertical-align: middle">
-            @Html.DisplayFor(modelItem => item.popularity)
-        </td>
-        <td style="vertical-align: middle">
-
-            <audio controls="" name="media"><source src="@item.preview_url" type="audio/mpeg"></audio>
-        </td>
-        <td style="vertical-align: middle">
-            @Html.DisplayFor(modelItem => item.track_number)
-        </td>
+                <td style="vertical-align: middle">
+                    <a href="@item.uri" target="_blank">@item.uri</a>
+                </td>
 
 
-    </tr>
+                <td style="vertical-align: middle">
+                    @Html.DisplayFor(modelItem => item.popularity)
+                </td>
+                <td style="vertical-align: middle">
+
+                    <audio controls="" name="media"><source src="@item.preview_url" type="audio/mpeg"></audio>
+                </td>
+                <td style="vertical-align: middle">
+                    @Html.DisplayFor(modelItem => item.track_number)
+                </td>
+
+
+            </tr>
         }
 
     </table>
