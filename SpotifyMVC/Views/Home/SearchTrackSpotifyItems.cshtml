@@ -9,31 +9,28 @@
 
                 </th>
                 <th scope="col">
-                    @Html.DisplayNameFor(model => model.name)
+                    @Html.DisplayName("Nombre")
                 </th>
                 <th scope="col">
-                    @Html.DisplayNameFor(model => model.artists)
+                    @Html.DisplayName("Artista")
                 </th>
+               
                 <th scope="col">
-                    @Html.DisplayNameFor(model => model.disc_number)
-                </th>
-                <th scope="col">
-                    @Html.DisplayNameFor(model => model.duration_ms)
+                    @Html.DisplayName("Duracion ms")
+
                 </th>
 
                 <th scope="col">
-                    @Html.DisplayNameFor(model => model.uri)
+                    @Html.DisplayName("Abrir en Spotify")
                 </th>
 
+                <th scope="col">
+                    @Html.DisplayName("Popularidad")
 
-                <th scope="col">
-                    @Html.DisplayNameFor(model => model.popularity)
                 </th>
                 <th scope="col">
-                    @Html.DisplayNameFor(model => model.preview_url)
-                </th>
-                <th scope="col">
-                    @Html.DisplayNameFor(model => model.track_number)
+                    @Html.DisplayName("Preview")
+
                 </th>
 
             </tr>
@@ -59,10 +56,7 @@
                 <td style="vertical-align: middle">
                     @Html.DisplayFor(modelItem => item.artists.FirstOrDefault().name)
                 </td>
-                <td style="vertical-align: middle">
-
-                    @Html.DisplayFor(modelItem => item.disc_number)
-                </td>
+              
                 <td style="vertical-align: middle">
                     @Html.DisplayFor(modelItem => item.duration_ms)
                 </td>
@@ -79,10 +73,6 @@
 
                     <audio controls="" name="media"><source src="@item.preview_url" type="audio/mpeg"></audio>
                 </td>
-                <td style="vertical-align: middle">
-                    @Html.DisplayFor(modelItem => item.track_number)
-                </td>
-
 
             </tr>
         }

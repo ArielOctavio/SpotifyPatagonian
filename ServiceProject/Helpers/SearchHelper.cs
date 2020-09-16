@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 
 namespace ServiceProject.Helpers
 {
@@ -17,9 +18,9 @@ namespace ServiceProject.Helpers
         {
 
             #region SecretVault
-            string clientID = "0c9c1069f1254aee9b8ab392f977e275";
+            string clientID = WebConfigurationManager.AppSettings["ClientID"].ToString();
 
-            string clientSecret = "243a77129ac5491fb37f9d49a763e61b";
+            string clientSecret = WebConfigurationManager.AppSettings["ClientSecret"].ToString();
             #endregion
 
             string auth = Convert.ToBase64String(Encoding.UTF8.GetBytes(clientID + ":" + clientSecret));
@@ -41,6 +42,10 @@ namespace ServiceProject.Helpers
 
         public static Root SearchTrack(string cadena)
         {
+            if (token == null)
+            {
+                GetTokenAsync().Wait();
+            }
             var client = new RestClient("https://api.spotify.com/v1/search");
 
             client.AddDefaultHeader("Authorization", $"Bearer {token.access_token}");
